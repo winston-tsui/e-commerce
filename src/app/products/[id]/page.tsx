@@ -4,6 +4,8 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { cache } from "react";
+import AddToCartButton from "./AddToCartButton";
+import { incrementProductQuantity } from "./actions";
 
 // Renders a page in this path.
 interface ProductPageProps {
@@ -25,10 +27,10 @@ export async function generateMetaData({
   return {
     title: product.name + "- ecommerce",
     description: product.description,
-    openGraph:{
-      images: [{url: product.imageUrl}]
-    }
-  }
+    openGraph: {
+      images: [{ url: product.imageUrl }],
+    },
+  };
 }
 
 export default async function ProductPage({
@@ -49,6 +51,10 @@ export default async function ProductPage({
         <h1 className="text-5xl font-bold">{product.name}</h1>
         <PriceTag price={product.price} className="mt-4"></PriceTag>
         <p className="py-6">{product.description}</p>
+        <AddToCartButton
+          productId={product.id}
+          incrementProductQuantity={incrementProductQuantity}
+        ></AddToCartButton>
       </div>
     </div>
   );

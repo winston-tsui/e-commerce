@@ -8,6 +8,7 @@ interface ProductCardProps {
 }
 
 // Cost of products are stored as cents in DB so convert to dollars.
+
 export default function ProductCard({ product }: ProductCardProps) {
   // Will be true if product is less than 7 days old
   const isNew =
