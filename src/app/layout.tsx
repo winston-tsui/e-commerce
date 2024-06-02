@@ -1,5 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
+import NavBar from "./Navbar/Navbar";
+import Footer from "./Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +21,9 @@ export default function RootLayout({
     // going smaller, it just prevents the page from changing past 300 pixels.
     <html lang="en">
       <body className={inter.className}>
+        <NavBar />
         <main className="m-auto min-w-[300px] max-w-7xl p-4">{children}</main>
+        <Footer></Footer>
       </body>
     </html>
   );
